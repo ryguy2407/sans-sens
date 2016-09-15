@@ -4,15 +4,15 @@
 #X obj 127 25 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 175 5 vsl 15 128 0 2 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6000 1;
+-1 -1 7500 1;
 #X obj 203 3 vsl 15 128 0 2 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6200 1;
+-1 -1 6600 1;
 #X obj 237 6 vsl 15 128 0 2 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4400 1;
+-1 -1 7100 1;
 #X obj 268 2 vsl 15 128 0 2 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6700 1;
+-1 -1 8200 1;
 #X obj 299 2 vsl 15 128 0 2 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6500 1;
+-1 -1 8800 1;
 #X floatatom 345 105 5 0 0 0 - - -;
 #X obj 464 298 stutter~;
 #X obj 492 79 metro 200;
@@ -25,17 +25,46 @@
 #X obj 490 106 random 7;
 #X obj 313 307 *~;
 #X obj 440 137 vsl 15 128 0 2 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 8600 1;
+-1 -1 0 1;
 #X obj 46 309 writesf~;
 #X msg 28 235 open beat.wav;
 #X msg 56 260 start;
 #X msg 152 280 stop;
 #X obj 184 191 *~;
 #X obj 72 39 vsl 15 128 0 2 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7000 1;
+-1 -1 4000 1;
 #X msg 504 230 1000;
 #X obj 244 261 fmsynth;
 #X floatatom 241 210 5 0 0 0 - - -;
+#X obj 309 244 fmsynth;
+#X floatatom 308 198 5 0 0 0 - - -;
+#X obj 233 294 *~;
+#X obj 387 136 vsl 15 128 0 2 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 271 164 random 100;
+#X obj 408 0 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 345 162 random 100;
+#X obj 642 24 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 628 138 line;
+#X obj 273 396 freeverb~;
+#X obj 433 391 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 7700 1;
+#X msg 429 416 wet \$1;
+#X obj 433 446 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 12700 1;
+#X obj 431 499 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 12100 1;
+#X msg 429 471 dry \$1;
+#X msg 427 524 roomsize \$1;
+#X obj 196 477 delwrite~ delLeft 4000;
+#X obj 196 512 delwrite~ delRight 4000;
+#X obj 83 374 delread~ delLeft 1000;
+#X obj 80 408 delread~ delRight 1000;
+#X obj 662 71 delay 200;
+#X obj 668 104 0 200;
+#X obj 595 74 0.02 200;
 #X connect 1 0 9 0;
 #X connect 1 0 24 0;
 #X connect 2 0 1 0;
@@ -73,6 +102,36 @@
 #X connect 24 0 20 0;
 #X connect 25 0 24 1;
 #X connect 26 0 9 1;
-#X connect 27 0 0 0;
-#X connect 27 0 0 1;
+#X connect 27 0 31 0;
 #X connect 28 0 27 0;
+#X connect 29 0 31 0;
+#X connect 30 0 29 0;
+#X connect 31 0 38 0;
+#X connect 31 0 38 1;
+#X connect 32 0 31 1;
+#X connect 33 0 28 0;
+#X connect 34 0 33 0;
+#X connect 34 0 35 0;
+#X connect 34 0 49 0;
+#X connect 34 0 51 0;
+#X connect 35 0 30 0;
+#X connect 36 0 49 0;
+#X connect 36 0 51 0;
+#X connect 37 0 31 1;
+#X connect 38 0 0 0;
+#X connect 38 0 45 0;
+#X connect 38 0 20 0;
+#X connect 38 1 0 1;
+#X connect 38 1 46 0;
+#X connect 38 1 20 0;
+#X connect 39 0 40 0;
+#X connect 40 0 38 0;
+#X connect 41 0 43 0;
+#X connect 42 0 44 0;
+#X connect 43 0 38 0;
+#X connect 44 0 38 0;
+#X connect 47 0 0 0;
+#X connect 48 0 0 1;
+#X connect 49 0 50 0;
+#X connect 50 0 37 0;
+#X connect 51 0 37 0;
